@@ -45,73 +45,75 @@
 
 :root {
   --radius: 0.75rem;
-  --background: 0 0% 100%;
-  --foreground: 0 0% 3.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 3.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 3.9%;
-  --primary: 221.2 83.2% 53.3%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222.2 84% 4.9%;
-  --muted: 210 40% 96%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96%;
-  --accent-foreground: 222.2 84% 4.9%;
+  /* Teal-focused light theme */
+  --background: 180 20% 99%;
+  --foreground: 180 10% 15%;
+  --card: 180 20% 98%;
+  --card-foreground: 180 10% 15%;
+  --popover: 180 20% 98%;
+  --popover-foreground: 180 10% 15%;
+  --primary: 180 100% 25%; /* Rich teal */
+  --primary-foreground: 180 20% 98%;
+  --secondary: 180 30% 90%;
+  --secondary-foreground: 180 10% 20%;
+  --muted: 180 20% 92%;
+  --muted-foreground: 180 10% 45%;
+  --accent: 180 100% 35%; /* Bright teal accent */
+  --accent-foreground: 180 20% 98%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221.2 83.2% 53.3%;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --border: 180 20% 88%;
+  --input: 180 20% 88%;
+  --ring: 180 100% 30%;
+  --chart-1: 180 100% 25%;
+  --chart-2: 180 80% 35%;
+  --chart-3: 180 60% 45%;
+  --chart-4: 180 90% 30%;
+  --chart-5: 180 70% 40%;
+  --sidebar: 180 25% 96%;
+  --sidebar-foreground: 180 10% 20%;
+  --sidebar-primary: 180 100% 25%;
+  --sidebar-primary-foreground: 180 20% 98%;
+  --sidebar-accent: 180 20% 90%;
+  --sidebar-accent-foreground: 180 10% 20%;
+  --sidebar-border: 180 20% 85%;
+  --sidebar-ring: 180 100% 30%;
 }
 
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 84% 4.9%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
+  /* Teal-focused dark theme */
+  --background: 180 15% 8%;
+  --foreground: 180 20% 95%;
+  --card: 180 15% 10%;
+  --card-foreground: 180 20% 95%;
+  --popover: 180 15% 10%;
+  --popover-foreground: 180 20% 95%;
+  --primary: 180 100% 40%; /* Bright teal for dark theme */
+  --primary-foreground: 180 15% 8%;
+  --secondary: 180 20% 15%;
+  --secondary-foreground: 180 20% 90%;
+  --muted: 180 20% 15%;
+  --muted-foreground: 180 15% 65%;
+  --accent: 180 100% 50%; /* Vibrant teal accent */
+  --accent-foreground: 180 15% 8%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 224.3 76.3% 94.1%;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --border: 180 20% 20%;
+  --input: 180 20% 20%;
+  --ring: 180 100% 45%;
+  --chart-1: 180 100% 40%;
+  --chart-2: 180 80% 50%;
+  --chart-3: 180 60% 60%;
+  --chart-4: 180 90% 45%;
+  --chart-5: 180 70% 55%;
+  --sidebar: 180 20% 12%;
+  --sidebar-foreground: 180 20% 90%;
+  --sidebar-primary: 180 100% 40%;
+  --sidebar-primary-foreground: 180 15% 8%;
+  --sidebar-accent: 180 20% 18%;
+  --sidebar-accent-foreground: 180 20% 90%;
+  --sidebar-border: 180 15% 25%;
+  --sidebar-ring: 180 100% 45%;
 }
 
 @layer base {
@@ -133,7 +135,7 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Custom scrollbar */
+/* Custom teal-themed scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -143,21 +145,21 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  background: linear-gradient(to bottom, hsl(180 100% 30%), hsl(180 100% 40%));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #2563eb, #7c3aed);
+  background: linear-gradient(to bottom, hsl(180 100% 25%), hsl(180 100% 35%));
 }
 
-/* Selection styling */
+/* Teal selection styling */
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
+  background: hsla(180, 100%, 40%, 0.3);
   color: inherit;
 }
 
-/* Smooth focus transitions */
+/* Smooth focus transitions with teal */
 *:focus {
   outline: none;
 }
@@ -222,7 +224,6 @@ body {
   }
 }
 
-/* Utility classes */
 .animate-gradient-x {
   animation: gradient-x 3s ease infinite;
 }
@@ -240,85 +241,88 @@ body {
 }
 
 .animate-pulse-slow {
-  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .animate-wiggle {
   animation: wiggle 1s ease-in-out infinite;
 }
 
-/* Backdrop blur fallback */
+/* Enhanced teal glass effect */
 .backdrop-blur-fallback {
-  background: rgba(255, 255, 255, 0.8);
+  background: hsla(180, 30%, 90%, 0.8);
 }
 
 .dark .backdrop-blur-fallback {
-  background: rgba(0, 0, 0, 0.8);
+  background: hsla(180, 20%, 15%, 0.8);
 }
 
-/* Glass effect */
+/* Teal glass morphism */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: hsla(180, 30%, 95%, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid hsla(180, 100%, 40%, 0.2);
 }
 
 .dark .glass {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: hsla(180, 20%, 10%, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(180, 100%, 50%, 0.2);
 }
 
-/* Gradient text utilities */
+/* Teal gradient text effects */
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, hsl(180 100% 30%), hsl(180 100% 50%));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.gradient-text-blue {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+.gradient-text-teal {
+  background: linear-gradient(135deg, hsl(180 100% 25%), hsl(180 100% 45%), hsl(180 80% 60%));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.gradient-text-green {
-  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+.gradient-text-teal-vibrant {
+  background: linear-gradient(135deg, hsl(180 100% 35%), hsl(180 90% 55%), hsl(175 85% 65%));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Button hover effects */
+/* Enhanced hover effects with teal */
 .btn-hover-lift {
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px hsla(180, 100%, 40%, 0.3);
 }
 
-/* Card hover effects */
+/* Teal card hover effects */
 .card-hover {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px hsla(180, 100%, 30%, 0.15);
+  border-color: hsl(180 100% 40%);
 }
 
 .dark .card-hover:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 30px hsla(180, 100%, 50%, 0.2);
+  border-color: hsl(180 100% 50%);
 }
 
-/* Loading states */
+/* Teal loading shimmer */
 .loading-shimmer {
-  background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, 0.5) 50%, transparent 60%);
+  background: linear-gradient(90deg, transparent, hsla(180, 100%, 50%, 0.4), transparent);
   background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+  animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
@@ -330,18 +334,18 @@ body {
   }
 }
 
-/* Typography enhancements */
+/* Better text balance */
 .text-balance {
   text-wrap: balance;
 }
 
-/* Focus states for accessibility */
+/* Enhanced focus ring with teal */
 .focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  @apply focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2;
 }
 
 .dark .focus-ring {
-  @apply focus:ring-offset-slate-900;
+  @apply focus-visible:ring-teal-400 focus-visible:ring-offset-slate-800;
 }
 
 /* Print styles */
@@ -349,7 +353,7 @@ body {
   .no-print {
     display: none !important;
   }
-
+  
   body {
     background: white !important;
     color: black !important;
@@ -362,7 +366,7 @@ body {
 }
 
 .responsive-margin {
-  @apply mx-4 sm:mx-6 lg:mx-8;
+  @apply mx-auto max-w-7xl;
 }
 
 .responsive-text-sm {
@@ -386,69 +390,68 @@ body {
 }
 
 .responsive-text-3xl {
-  @apply text-3xl sm:text-4xl md:text-5xl;
+  @apply text-3xl sm:text-4xl;
 }
 
 .responsive-text-4xl {
-  @apply text-4xl sm:text-5xl md:text-6xl;
+  @apply text-4xl sm:text-5xl lg:text-6xl;
 }
 
-/* Touch-friendly buttons */
+/* Better touch targets */
 .touch-target {
   @apply min-h-[44px] min-w-[44px];
 }
 
-/* Responsive grid utilities */
+/* Responsive grids */
 .responsive-grid-1-2 {
-  @apply grid grid-cols-1 sm:grid-cols-2;
+  @apply grid grid-cols-1 md:grid-cols-2;
 }
 
 .responsive-grid-1-2-3 {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
 }
 
 .responsive-grid-1-2-4 {
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4;
 }
 
-/* Mobile-first spacing */
+/* Responsive spacing */
 .responsive-space-y {
-  @apply space-y-4 sm:space-y-6 lg:space-y-8;
+  @apply space-y-4 md:space-y-6 lg:space-y-8;
 }
 
 .responsive-space-x {
-  @apply space-x-4 sm:space-x-6 lg:space-x-8;
+  @apply space-x-4 md:space-x-6 lg:space-x-8;
 }
 
 /* Responsive containers */
 .responsive-container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  @apply container mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Mobile navigation improvements */
+/* Mobile optimizations */
 .mobile-nav-item {
-  @apply touch-manipulation select-none;
+  @apply block py-3 px-4 text-base font-medium rounded-lg transition-colors;
 }
 
-/* Prevent horizontal scroll on mobile */
+/* Ensure proper scrolling and touch handling */
 html, body {
-  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Improve touch targets on mobile */
+/* Mobile-specific optimizations */
 @media (max-width: 768px) {
   button, a, [role="button"] {
     min-height: 44px;
     min-width: 44px;
   }
   
-  /* Improve mobile navigation */
   .mobile-nav-button {
     padding: 12px;
     touch-action: manipulation;
   }
   
-  /* Better mobile form inputs */
   input, textarea, select {
     font-size: 16px; /* Prevents zoom on iOS */
   }
@@ -457,11 +460,11 @@ html, body {
 /* Tablet optimizations */
 @media (min-width: 768px) and (max-width: 1024px) {
   .tablet-optimized {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 }
 
-/* High DPI displays */
+/* High DPI optimizations */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .high-dpi-optimized {
     image-rendering: -webkit-optimize-contrast;

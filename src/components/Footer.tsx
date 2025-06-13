@@ -1,243 +1,123 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Brain, Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
-import { Button } from "./ui/button";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Heart, Code, Sparkles, Brain } from 'lucide-react';
 
-const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const footerLinks = {
-    Product: [
-      { name: "Features", href: "#features" },
-      { name: "Technology", href: "#technology" },
-      { name: "Privacy", href: "#privacy" },
-      { name: "Documentation", href: "/docs" },
-    ],
-    Company: [
-      { name: "About Us", href: "#about" },
-      { name: "Blog", href: "/blog" },
-      { name: "Contact", href: "#contact" },
-      { name: "Founders", href: "#about" },
-    ],
-    Developers: [
-      { name: "GitHub", href: "https://github.com/cognitive-assistant" },
-      { name: "API Docs", href: "/docs#api-reference" },
-      { name: "Discord", href: "https://discord.gg/cognitive-assistant" },
-      { name: "Quick Start", href: "/docs#getting-started" },
-    ],
-    Legal: [
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Terms of Service", href: "/terms" },
-      { name: "Cookie Policy", href: "/cookies" },
-      { name: "Licenses", href: "/license" },
-    ],
-  };
-
-  const socialLinks = [
-    {
-      icon: Github,
-      href: "https://github.com/cognitive-assistant",
-      label: "GitHub",
-      color: "hover:text-gray-400",
-    },
-    {
-      icon: Linkedin,
-      href: "https://in.linkedin.com/in/rohit4242",
-      label: "LinkedIn",
-      color: "hover:text-blue-600",
-    },
-    {
-      icon: Mail,
-      href: "mailto:rohitluni123@gmail.com",
-      label: "Email",
-      color: "hover:text-teal-400",
-    },
-  ];
-
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-white border-t border-slate-800">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              {/* Logo */}
-              <motion.a
-                href="/"
-                className="flex items-center space-x-3 cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+    <footer className="bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
+          
+          {/* Logo & Status */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center md:text-left"
+          >
+            <div className="flex items-center justify-center md:justify-start space-x-3 mb-3">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                className="w-7 h-7 md:w-8 md:h-8 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-lg flex items-center justify-center"
               >
-                <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                  <Brain className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                  Cognitive Assistant
-                </span>
-              </motion.a>
-
-              {/* Description */}
-              <p className="text-gray-300 text-lg leading-relaxed max-w-md">
-                The future of AI assistance is private, intelligent, and
-                completely under your control. Experience the power of local AI
-                processing.
-              </p>
-
-              {/* Social Links */}
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1, duration: 0.4 }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`p-3 bg-slate-800 rounded-lg hover:bg-slate-700 transition-all duration-300 ${social.color}`}
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </motion.a>
-                ))}
-              </div>
-
-              {/* Newsletter Signup */}
-              <div className="space-y-3">
-                <h4 className="font-semibold text-white">Stay Updated</h4>
-                <div className="flex space-x-2">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  <Button
-                    size="sm"
-                    className="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700"
-                  >
-                    Subscribe
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Footer Links */}
-          <div className="lg:col-span-3 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {Object.entries(footerLinks).map(
-              ([category, links], categoryIndex) => (
-                <motion.div
-                  key={category}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
-                >
-                  <h4 className="font-semibold text-white mb-4">{category}</h4>
-                  <ul className="space-y-3">
-                    {links.map((link, linkIndex) => (
-                      <motion.li
-                        key={link.name}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          delay: categoryIndex * 0.1 + linkIndex * 0.05,
-                          duration: 0.4,
-                        }}
-                      >
-                        <a
-                          href={link.href}
-                          className="text-gray-400 hover:text-white transition-colors duration-200 text-sm"
-                        >
-                          {link.name}
-                        </a>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Footer */}
-      <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            {/* Copyright */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex items-center space-x-2 text-gray-400 text-sm"
-            >
-              <span>
-                © 2024 Cognitive Assistant by Rohitkumar Luni & Ranchhod bhai
-                Aal. Made with
+                <Brain className="w-4 h-4 md:w-5 md:h-5 text-slate-900" />
+              </motion.div>
+              <span className="text-base md:text-lg font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                Cognitive Assistant
               </span>
-              <Heart className="w-4 h-4 text-red-500" />
-              <span>for privacy and AI.</span>
-            </motion.div>
+            </div>
+            
+            <div className="flex items-center justify-center md:justify-start space-x-2">
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 bg-teal-400 rounded-full"
+              />
+              <span className="text-sm text-teal-200">Dreaming in Progress...</span>
+            </div>
+          </motion.div>
 
-            {/* Additional Links */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex items-center space-x-6 text-sm text-gray-400"
-            >
-              <a href="#" className="hover:text-white transition-colors">
-                Status
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Security
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Changelog
-              </a>
-            </motion.div>
+          {/* Dream Status */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center order-3 md:order-2"
+          >
+            <div className="bg-teal-900/30 rounded-lg p-4 border border-teal-700/30">
+              <h3 className="text-sm font-semibold text-teal-300 mb-2">Current Phase</h3>
+              <div className="flex items-center justify-center space-x-2">
+                <Sparkles className="w-4 h-4 text-teal-400" />
+                <span className="text-white font-medium text-sm md:text-base">Research & Discovery</span>
+              </div>
+              <div className="w-full bg-teal-900/50 rounded-full h-2 mt-3">
+                <motion.div
+                  initial={{ width: '0%' }}
+                  whileInView={{ width: '25%' }}
+                  transition={{ duration: 2, delay: 0.5 }}
+                  className="bg-gradient-to-r from-teal-500 to-cyan-500 h-2 rounded-full"
+                />
+              </div>
+              <span className="text-xs text-teal-300 mt-1 block">25% Complete</span>
+            </div>
+          </motion.div>
 
-            {/* Back to Top */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.4 }}
-            >
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={scrollToTop}
-                className="text-gray-400 hover:text-white hover:bg-slate-800 group"
-              >
-                <ArrowUp className="w-4 h-4 mr-2 group-hover:-translate-y-1 transition-transform" />
-                Back to Top
-              </Button>
-            </motion.div>
-          </div>
+          {/* Contact & Love */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center md:text-right order-2 md:order-3"
+          >
+            <div className="space-y-2">
+              <p className="text-sm text-gray-300">Built with</p>
+              <div className="flex items-center justify-center md:justify-end space-x-1">
+                <Heart className="w-4 h-4 text-red-400 animate-pulse" />
+                <span className="text-sm">and</span>
+                <Code className="w-4 h-4 text-teal-400" />
+                <span className="text-sm">by dreamers</span>
+              </div>
+              <div className="text-xs text-teal-200">
+                Ranchhodbhai & Rohit
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
 
-      {/* Floating Back to Top Button */}
-      <motion.button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-3 bg-gradient-to-r from-teal-600 to-cyan-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 lg:hidden"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.6 }}
-      >
-        <ArrowUp className="w-5 h-5" />
-      </motion.button>
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="border-t border-teal-800/30 mt-6 md:mt-8 pt-4 md:pt-6 text-center"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
+            <div className="text-sm text-gray-400">
+              © 2024 Cognitive Assistant Project. A dream in development.
+            </div>
+            
+            <div className="flex items-center space-x-2 md:space-x-4 text-xs md:text-sm text-gray-400">
+              <span>Privacy First</span>
+              <span className="w-1 h-1 bg-teal-500 rounded-full"></span>
+              <span>Open Source</span>
+              <span className="w-1 h-1 bg-teal-500 rounded-full"></span>
+              <span>Community Driven</span>
+            </div>
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-3 md:mt-4 text-xs text-teal-300 italic"
+          >
+            "Every expert was once a beginner. Every pro was once an amateur. Every icon was once an unknown."
+          </motion.div>
+        </motion.div>
+      </div>
     </footer>
   );
 };

@@ -1,266 +1,251 @@
 "use client";
 
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
-import { 
-  Mail, 
-  MessageSquare, 
-  Github, 
-  Linkedin,
-  Phone,
-  MapPin,
-  Send,
-  ArrowRight,
-  Users
-} from 'lucide-react';
+import { Mail, MessageCircle, Send, Heart, Github, Twitter, Linkedin, Coffee, Zap } from 'lucide-react';
 
-const ContactSection = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
+const ContactSection: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
   });
 
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: "Email Us",
-      description: "Get in touch for support or partnership inquiries",
-      value: "me@therencho.com",
-      color: "from-teal-500 to-cyan-500",
-      action: "mailto:me@therencho.com"
-    },
-    {
-      icon: MessageSquare,
-      title: "Join Discord",
-      description: "Connect with our community and developers",
-      value: "Discord Community",
-      color: "from-cyan-500 to-teal-500",
-      action: "https://discord.gg/cognitive-assistant"
-    },
-    {
-      icon: Phone,
-      title: "Schedule Call",
-      description: "Book a demo or technical consultation",
-      value: "Book Meeting",
-      color: "from-emerald-500 to-teal-500",
-      action: "https://calendly.com/cognitive-assistant"
-    }
-  ];
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-  const socialLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com/cognitive-assistant", color: "hover:text-gray-600" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://in.linkedin.com/in/rohit4242", color: "hover:text-blue-600" },
-    { icon: Mail, label: "Email", href: "mailto:rohitluni123@gmail.com", color: "hover:text-teal-500" },
-  ];
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-teal-900 via-cyan-900 to-slate-900 text-white">
+    <section id="contact" className="py-12 md:py-20 bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-950 dark:to-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 md:mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
+          <motion.div 
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium mb-4"
+            className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl mb-6"
           >
-            <Send className="w-4 h-4 mr-2" />
-            Get In Touch
+            <Heart className="w-6 h-6 md:w-8 md:h-8 text-white" />
           </motion.div>
           
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Let's Build the Future Together
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent mb-4 md:mb-6">
+            Join Our Journey
           </h2>
           
-          <p className="text-base sm:text-lg md:text-xl text-cyan-100 max-w-3xl mx-auto leading-relaxed">
-            Ready to experience privacy-first AI? Have questions about our technology? 
-            Want to join our community? We'd love to hear from you.
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed text-center">
+            Every great dream needs believers, contributors, and fellow dreamers. 
+            Be part of the privacy-first AI revolution.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          
-          {/* Contact Methods */}
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+          {/* Contact Form */}
           <motion.div
-            ref={ref}
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            viewport={{ once: true }}
+            className="order-2 lg:order-1"
           >
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-6">Choose Your Preferred Way</h3>
-              <div className="grid gap-6">
-                {contactMethods.map((method, index) => (
-                  <motion.div
-                    key={method.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: index * 0.1, duration: 0.6 }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <Card className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300">
-                      <CardContent className="p-6">
-                        <div className="flex items-center space-x-4">
-                          <motion.div
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.5 }}
-                            className={`p-3 rounded-xl bg-gradient-to-br ${method.color} shadow-lg`}
-                          >
-                            <method.icon className="w-6 h-6 text-white" />
-                          </motion.div>
-                          <div className="flex-1">
-                            <h4 className="text-lg font-semibold text-white mb-1">
-                              {method.title}
-                            </h4>
-                            <p className="text-blue-100 text-sm mb-2">
-                              {method.description}
-                            </p>
-                            <Button
-                              variant="ghost"
-                              className="text-blue-300 hover:text-white hover:bg-white/10 p-0 h-auto font-medium"
-                              onClick={() => window.open(method.action, '_blank')}
-                            >
-                              {method.value}
-                              <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
+            <div className="bg-white dark:bg-slate-800/50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 backdrop-blur-sm">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-teal-500 mr-3" />
+                Share Your Thoughts
+              </h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors text-left"
+                    placeholder="Enter your name"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors text-left"
+                    placeholder="your@email.com"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">
+                    Your Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors resize-none text-left"
+                    placeholder="Tell us about your ideas, feedback, or how you'd like to contribute..."
+                  />
+                </div>
+                
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  <Send className="w-5 h-5" />
+                  <span>Send Message</span>
+                </motion.button>
+              </form>
+            </div>
+          </motion.div>
+
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="order-1 lg:order-2 space-y-6 md:space-y-8"
+          >
+            {/* Direct Contact */}
+            <div className="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 p-6 md:p-8 rounded-2xl border border-teal-200 dark:border-teal-800">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <Mail className="w-5 h-5 md:w-6 md:h-6 text-teal-500 mr-3" />
+                Reach Out Directly
+              </h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-center p-4 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-white font-bold text-sm md:text-base">R</span>
+                  </div>
+                  <div className="flex-1 text-left">
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">Ranchhodbhai Aal</p>
+                    <a href="mailto:me@therencho.com" className="text-teal-600 dark:text-teal-400 hover:underline text-sm">
+                      me@therencho.com
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center p-4 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-white font-bold text-sm md:text-base">R</span>
+                  </div>
+                  <div className="flex-1 text-left">
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm md:text-base">Rohitkumar Luni</p>
+                    <a href="mailto:rohitluni123@gmail.com" className="text-teal-600 dark:text-teal-400 hover:underline text-sm">
+                      rohitluni123@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Ways to Connect */}
+            <div className="bg-white dark:bg-slate-800/50 p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <Zap className="w-5 h-5 md:w-6 md:h-6 text-teal-500 mr-3" />
+                How You Can Help
+              </h3>
+              
+              <div className="grid gap-4">
+                <div className="flex items-start p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg border border-teal-200 dark:border-teal-800">
+                  <Coffee className="w-5 h-5 md:w-6 md:h-6 text-teal-500 mr-3 mt-1 flex-shrink-0" />
+                  <div className="text-left">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm md:text-base">Buy Us Coffee</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm">
+                      Fuel our late-night coding sessions
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg border border-cyan-200 dark:border-cyan-800">
+                  <Github className="w-5 h-5 md:w-6 md:h-6 text-cyan-500 mr-3 mt-1 flex-shrink-0" />
+                  <div className="text-left">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm md:text-base">Contribute Code</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm">
+                      Join our development journey
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg border border-teal-200 dark:border-teal-800">
+                  <Heart className="w-5 h-5 md:w-6 md:h-6 text-teal-500 mr-3 mt-1 flex-shrink-0" />
+                  <div className="text-left">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-sm md:text-base">Spread the Word</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm">
+                      Help others discover our vision
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <h4 className="text-lg font-semibold mb-4">Follow Our Journey</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`p-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 ${social.color}`}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </motion.a>
-                ))}
+            <div className="bg-gradient-to-r from-teal-500 to-cyan-500 p-6 md:p-8 rounded-2xl text-white">
+              <h3 className="text-lg md:text-xl font-bold mb-4 flex items-center">
+                <Heart className="w-5 h-5 mr-2" />
+                Stay Connected
+              </h3>
+              <p className="text-teal-100 mb-6 text-left text-sm md:text-base">
+                Follow our journey and get updates
+              </p>
+              
+              <div className="flex space-x-4 justify-center">
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  href="#"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
+                  <Github className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  href="#"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
+                  <Twitter className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  href="#"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                >
+                  <Linkedin className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                </motion.a>
               </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Card className="bg-white/10 backdrop-blur-sm border border-white/20">
-              <CardContent className="p-8">
-                <h3 className="text-xl sm:text-2xl font-bold mb-6">Send Us a Message</h3>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-blue-100 mb-2">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-blue-100 mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-blue-100 mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-                      placeholder="What's this about?"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-blue-100 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Tell us more about your project or question..."
-                    />
-                  </div>
-                  
-                                      <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-semibold py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
-                    >
-                    Send Message
-                    <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            </div>
           </motion.div>
         </div>
-
-        {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 text-center"
-        >
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-blue-100">
-            <div>
-              <MapPin className="w-8 h-8 mx-auto mb-4 text-blue-400" />
-              <h4 className="font-semibold mb-2">Distributed Team</h4>
-              <p className="text-sm">Working remotely across time zones</p>
-            </div>
-            <div>
-              <MessageSquare className="w-8 h-8 mx-auto mb-4 text-blue-400" />
-              <h4 className="font-semibold mb-2">Response Time</h4>
-              <p className="text-sm">Usually within 24 hours</p>
-            </div>
-            <div>
-              <Users className="w-8 h-8 mx-auto mb-4 text-teal-400" />
-              <h4 className="font-semibold mb-2">Community</h4>
-              <p className="text-sm">Building together with users</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

@@ -1,182 +1,139 @@
 "use client";
 
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Button } from './ui/button';
-import { ArrowRight, Play, Shield, Zap, Brain, Cpu, Wifi, WifiOff } from 'lucide-react';
+import { Zap, Shield, Cpu, Heart, Lightbulb, Rocket } from 'lucide-react';
 
-const HeroSection = () => {
-  const floatingAnimation = {
-    y: [-10, 10, -10],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut" as const
-    }
-  };
-
-  const features = [
-    { icon: Shield, text: "Privacy First", color: "text-green-500" },
-    { icon: WifiOff, text: "Offline Capable", color: "text-blue-500" },
-    { icon: Zap, text: "Real-time Response", color: "text-yellow-500" },
-    { icon: Brain, text: "Smart AI", color: "text-purple-500" },
-  ];
-
+const HeroSection: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-teal-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-96 md:h-96 bg-teal-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-32 md:h-32 bg-cyan-500/10 rounded-full blur-2xl animate-bounce"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8"
+        >
+          <div className="flex items-center justify-center mb-6">
+            <motion.div 
+              className="bg-teal-500/20 p-2 md:p-3 rounded-2xl mr-3 md:mr-4"
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-teal-400" />
+            </motion.div>
+            <span className="bg-gradient-to-r from-teal-400 to-cyan-400 text-transparent bg-clip-text text-sm md:text-lg font-semibold">
+              DREAM PROJECT IN DEVELOPMENT
+            </span>
+          </div>
           
-          {/* Left Column - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-500 text-transparent bg-clip-text">
+              Cognitive Assistant
+            </span>
+          </h1>
+          
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+            <span className="text-teal-400 font-semibold">Envisioning</span> a privacy-first AI assistant that runs entirely on your device. 
+            <br className="hidden md:block" />
+            <span className="text-teal-300">No cloud. No tracking. Just pure, private AI.</span>
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 text-sm text-gray-400 mb-8">
+            <div className="flex items-center">
+              <div className="w-2 h-2 bg-teal-400 rounded-full mr-2 animate-pulse"></div>
+              <span>Early Development</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></div>
+              <span>Prototype Phase</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-2 h-2 bg-teal-300 rounded-full mr-2 animate-pulse"></div>
+              <span>Vision 2025</span>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+        >
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold shadow-2xl hover:shadow-teal-500/25 transition-all duration-300 flex items-center justify-center"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium"
-            >
-              <Cpu className="w-4 h-4 mr-2" />
-              Powered by Jetson Nano & Local LLMs
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent leading-tight"
-            >
-              Your Privacy-First
-              <br />
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl">AI Companion</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl"
-            >
-              Experience the future of AI assistants with real-time conversations, 
-              smart home control, and intelligent scheduling - all while keeping your 
-              data completely private and offline.
-            </motion.p>
-
-            {/* Features Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
-            >
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.text}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                  className="flex items-center space-x-3 p-3 rounded-lg bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm text-sm sm:text-base"
-                >
-                  <feature.icon className={`w-5 h-5 ${feature.color}`} />
-                  <span className="font-medium text-gray-700 dark:text-gray-300">
-                    {feature.text}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Button
-                size="lg"
-                className="group bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Get Started
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="lg"
-                className="group border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
-              >
-                <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                Watch Demo
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Column - Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            <Rocket className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+            Follow the Journey
+          </motion.button>
+          
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="border-2 border-teal-400 text-teal-400 px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-teal-400/10 transition-all duration-300 flex items-center justify-center"
           >
-            {/* Main Visual Container */}
-            <motion.div
-              animate={floatingAnimation}
-              className="relative mx-auto w-full max-w-xs sm:max-w-md"
-            >
-              {/* Central AI Brain */}
-              <div className="relative">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="w-48 h-48 sm:w-64 sm:h-64 mx-auto rounded-full bg-gradient-to-br from-teal-500 via-cyan-500 to-emerald-500 p-1"
-                >
-                  <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center">
-                    <Brain className="w-16 h-16 sm:w-24 sm:h-24 text-teal-600" />
-                  </div>
-                </motion.div>
+            <Heart className="w-4 h-4 md:w-5 md:h-5 mr-2" />
+            Support the Vision
+          </motion.button>
+        </motion.div>
 
-                {/* Floating Elements */}
-                {[
-                  { icon: Shield, position: "top-0 left-4 sm:left-8", delay: 0 },
-                  { icon: Zap, position: "top-4 sm:top-8 right-0", delay: 0.5 },
-                  { icon: Cpu, position: "bottom-0 right-4 sm:right-8", delay: 1 },
-                  { icon: WifiOff, position: "bottom-4 sm:bottom-8 left-0", delay: 1.5 },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8 + item.delay, duration: 0.5 }}
-                    className={`absolute ${item.position} w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-800 rounded-full shadow-lg flex items-center justify-center`}
-                  >
-                    <motion.div
-                      animate={{ y: [-5, 5, -5] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: item.delay }}
-                    >
-                      <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600" />
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+        {/* Dream Features Preview */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto"
+        >
+          <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 md:p-6 border border-white/10 hover:border-teal-400/30 transition-colors duration-300">
+            <Shield className="w-6 h-6 md:w-8 md:h-8 text-teal-400 mb-4 mx-auto" />
+            <h3 className="text-base md:text-lg font-semibold text-white mb-2">Privacy First</h3>
+            <p className="text-gray-400 text-sm">Your data never leaves your device. Ever.</p>
+            <div className="mt-3 text-xs text-teal-400">📋 In Research</div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 md:p-6 border border-white/10 hover:border-cyan-400/30 transition-colors duration-300">
+            <Cpu className="w-6 h-6 md:w-8 md:h-8 text-cyan-400 mb-4 mx-auto" />
+            <h3 className="text-base md:text-lg font-semibold text-white mb-2">Edge Computing</h3>
+            <p className="text-gray-400 text-sm">Powerful AI processing on local hardware.</p>
+            <div className="mt-3 text-xs text-cyan-400">🔧 Prototyping</div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-4 md:p-6 border border-white/10 hover:border-teal-300/30 transition-colors duration-300">
+            <Zap className="w-6 h-6 md:w-8 md:h-8 text-teal-300 mb-4 mx-auto" />
+            <h3 className="text-base md:text-lg font-semibold text-white mb-2">Smart Control</h3>
+            <p className="text-gray-400 text-sm">Seamless IoT and home automation.</p>
+            <div className="mt-3 text-xs text-teal-300">💭 Planned</div>
+          </div>
+        </motion.div>
 
-            {/* Background Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-teal-400/20 to-cyan-400/20 rounded-full blur-3xl -z-10"></div>
-            
-            {/* Animated Rings */}
-            {[1, 2, 3].map((ring) => (
-              <motion.div
-                key={ring}
-                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.2, 0.5] }}
-                transition={{ duration: 3, repeat: Infinity, delay: ring * 0.5 }}
-                className={`absolute inset-${ring * 4} border border-teal-400/20 rounded-full -z-10`}
-              />
-            ))}
-          </motion.div>
-        </div>
+        {/* Development Progress Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-12 md:mt-16"
+        >
+          <p className="text-gray-500 text-sm mb-4">Development Progress</p>
+          <div className="w-full max-w-md mx-auto bg-gray-800 rounded-full h-2">
+            <motion.div 
+              className="bg-gradient-to-r from-teal-500 to-cyan-500 h-2 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: "25%" }}
+              transition={{ duration: 2, delay: 1 }}
+            ></motion.div>
+          </div>
+          <p className="text-gray-400 text-xs mt-2">Phase 1: Foundation & Research</p>
+        </motion.div>
       </div>
     </section>
   );
